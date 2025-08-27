@@ -5,11 +5,8 @@ int evaluatePostfix(string expr) {
     stack<int> st;
 
     for (char ch : expr) {
-        // If operand (digit)
         if (isdigit(ch)) {
-            st.push(ch - '0'); // convert char → int
         }
-        // If operator
         else {
             int val2 = st.top(); st.pop();
             int val1 = st.top(); st.pop();
