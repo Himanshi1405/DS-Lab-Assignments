@@ -13,23 +13,18 @@ string infixToPostfix(string infix) {
     string postfix;
 
     for (char ch : infix) {
-        // If operand → directly add
         if (isalnum(ch)) {
             postfix += ch;
         }
-        // If '(' → push
         else if (ch == '(') {
             st.push(ch);
         }
-        // If ')' → pop until '('
         else if (ch == ')') {
             while (!st.empty() && st.top() != '(') {
                 postfix += st.top();
                 st.pop();
             }
-            st.pop(); // remove '('
         }
-        // If operator
         else {
             while (!st.empty() && precedence(st.top()) >= precedence(ch)) {
                 postfix += st.top();
@@ -38,8 +33,6 @@ string infixToPostfix(string infix) {
             st.push(ch);
         }
     }
-
-    // Pop remaining operators
     while (!st.empty()) {
         postfix += st.top();
         st.pop();
