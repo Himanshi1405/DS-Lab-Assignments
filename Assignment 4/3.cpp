@@ -14,14 +14,12 @@ void interleave(queue<int> &q){
     }
     
     while(!firsthalf.empty()){
-        for(int i=0; i<half; i++){
         q.push(firsthalf.front());
         firsthalf.pop();
         q.push(q.front());
         q.pop();
         }
-    }
-} 
+    } 
 int main(){
     queue<int> q;
     q.push(4);
