@@ -1,0 +1,49 @@
+/*Write a program interleave the first half of the queue with second half.
+Sample I/P: 4 7 11 20 5 9 Sample O/P: 4 20 7 5 11 9*/
+#include <bits/stdc++.h>
+using namespace std;
+
+void interleave(queue<int> &q){
+    int n=q.size();
+    int half=n/2;
+    queue<int> firsthalf;
+    
+    for(int i=0; i<half; i++){
+        firsthalf.push(q.front());
+        q.pop();
+    }
+    
+    while(!firsthalf.empty()){
+        for(int i=0; i<half; i++){
+        q.push(firsthalf.front());
+        firsthalf.pop();
+        q.push(q.front());
+        q.pop();
+        }
+    }
+} 
+int main(){
+    queue<int> q;
+    q.push(4);
+    q.push(7);
+    q.push(11);
+    q.push(20);
+    q.push(5);
+    q.push(9);
+    queue<int> temp= q;
+    cout<<"Original queue:\n";
+    while(!temp.empty()){
+        cout<<temp.front()<<endl;
+        temp.pop();
+    }
+    
+    interleave(q);
+    
+    cout<<"Interleaved queue:\n";
+    while(!q.empty()){
+        cout<<q.front()<<endl;
+        q.pop();
+    }
+    
+    return 0;
+}
