@@ -1,4 +1,3 @@
-// Q2_display_CLL.cpp
 #include <iostream>
 using namespace std;
 
